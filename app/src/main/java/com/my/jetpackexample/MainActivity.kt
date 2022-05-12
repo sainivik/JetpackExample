@@ -6,6 +6,8 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.annotation.StringRes
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.text.selection.SelectionContainer
+import androidx.compose.material.ExperimentalMaterialApi
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
 import androidx.compose.material.Text
@@ -21,6 +23,7 @@ import androidx.compose.ui.unit.sp
 import com.my.jetpackexample.ui.theme.JetpackExampleTheme
 
 class MainActivity : ComponentActivity() {
+    @ExperimentalMaterialApi
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
@@ -32,11 +35,7 @@ class MainActivity : ComponentActivity() {
                         verticalArrangement = Arrangement.SpaceEvenly,
                         horizontalAlignment = Alignment.CenterHorizontally
                     ) {
-                        MyRowView()
-                        MyRowView()
-                        MyRowView()
-                        MyRowView()
-                        MyRowView()
+                        ExpandableCard()
                     }
                 }
             }
@@ -64,6 +63,12 @@ fun CustomText(){
         textAlign = TextAlign.Center
     )
 }
+@Composable
+fun SelectionCustomText(){
+    SelectionContainer() {
+        Text(text = "Hello Android!!")
+    }
+}
 
 @Composable
 fun MyRowView() {
@@ -86,7 +91,7 @@ fun DefaultPreview() {
         verticalArrangement = Arrangement.SpaceEvenly,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
-        MyRowView()
+       SelectionCustomText()
 
     }
 }
